@@ -81,8 +81,6 @@ public class ResultActivity extends Activity  {
                         Log.e("Volley", error.toString());
                     }
                 });
-
-        // Add the request to the RequestQueue.
         String REQUEST_TAG = "com.example.moviefinder";
         AppSingleton.getInstance(getApplicationContext()).addToRequestQueue(jsonObjectRequest, REQUEST_TAG);
     }
