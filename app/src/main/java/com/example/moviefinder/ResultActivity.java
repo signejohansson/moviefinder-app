@@ -50,6 +50,7 @@ public class ResultActivity extends Activity  {
                                 String errorMessage = response.getString("Error");
                                 Toast.makeText(ResultActivity.this, errorMessage, Toast.LENGTH_SHORT).show();
                                 progressBar.setVisibility(View.GONE);
+                                goBackToMain();
                                 }
                             else {
                                 String title = response.getString("Title");
@@ -82,15 +83,22 @@ public class ResultActivity extends Activity  {
                     public void onErrorResponse(VolleyError error) {
                         Toast.makeText(ResultActivity.this, "Error occurred!", Toast.LENGTH_SHORT).show();
                         Log.e("Volley", error.toString());
+                        goBackToMain();
                     }
                 });
         String REQUEST_TAG = "com.example.moviefinder";
         AppSingleton.getInstance(getApplicationContext()).addToRequestQueue(jsonObjectRequest, REQUEST_TAG);
     }
 
-    public void onBackPressed(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
+    private void goBackToMain() {
+        Intent intent = new Intent(ResultActivity.this, MainActivity.class);
         startActivity(intent);
         finish();
     }
+
+    public void onBackPressed(View view) {
+        goBackToMain();
+    }
+
+
 }
