@@ -2,7 +2,15 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Moviefinder" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
+        <item name="android:windowBackground">@color/grey</item>
+        <item name="colorPrimary">@color/red</item> <!-- Set your desired primary color -->
+        <item name="colorPrimaryVariant">@color/white</item> <!-- Set your desired primary variant color -->
+        <item name="colorOnPrimary">@color/white</item>
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorAccent">@color/red</item>
+    </style>
+    <style name="Theme.Moviefinder.RedAccent">
+        <item name="colorAccent">@color/red</item>
     </style>
 
     <style name="Theme.Moviefinder" parent="Base.Theme.Moviefinder" />
