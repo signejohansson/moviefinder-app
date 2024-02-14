@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Moviefinder</string>
     <string name="imdb">IMDb: </string>
+    <string name="mainButton">SEARCH</string>
+    <string name="resultButton">BACK</string>
+    <string name="mainText">Search for a movie or tv-show!</string>
+    <string name="hint">Enter title</string>
+    <string name="imageDescription">The text "Movie Finder" above a film tape roll</string>
 </resources>
