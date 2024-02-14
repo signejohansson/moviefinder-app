@@ -1,29 +1,19 @@
 package com.example.moviefinder;
-import android.app.ActionBar;
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.VolleyLog;
-import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.NetworkImageView;
-import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import static android.content.ContentValues.TAG;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.toolbox.JsonObjectRequest;
 
@@ -43,6 +33,9 @@ public class ResultActivity extends Activity  {
         actor_view = findViewById(R.id.actor);
         plot_view = findViewById(R.id.plot);
 
+        final ProgressBar progressBar = findViewById(R.id.indeterminateBar);
+        progressBar.setVisibility(View.VISIBLE);
+
 
         String movieName = getIntent().getStringExtra("movie");
         String url = "https://www.omdbapi.com/?t=" + movieName + "&apikey=ca833554";
@@ -53,22 +46,32 @@ public class ResultActivity extends Activity  {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            String title = response.getString("Title");
-                            String year = response.getString("Year");
-                            String rating = response.getString("imdbRating");
-                            String released = response.getString("Released");
-                            String runtime = response.getString("Runtime");
-                            String genre = response.getString("Genre");
-                            String actor = response.getString("Actors");
-                            String plot = response.getString("Plot");
+                            if (response.has("Error")) {
+                                String errorMessage = response.getString("Error");
+                                Toast.makeText(ResultActivity.this, errorMessage, Toast.LENGTH_SHORT).show();
+                                progressBar.setVisibility(View.GONE);
+                                }
+                            else {
+                                String title = response.getString("Title");
+                                String year = response.getString("Year");
+                                String rating = response.getString("imdbRating");
+                                String released = response.getString("Released");
+                                String runtime = response.getString("Runtime");
+                                String genre = response.getString("Genre");
+                                String actor = response.getString("Actors");
+                                String plot = response.getString("Plot");
 
-                            title_view.setText(title + " (" + year + ")");
-                            rate_view.setText("Rating: " + rating);
-                            release_view.setText("Released: " + released);
-                            run_view.setText("Runtime: " + runtime);
-                            genre_view.setText("Genre: " + genre);
-                            actor_view.setText("Actors: " + actor);
-                            plot_view.setText("Plot: " + plot);
+                                title_view.setText(title + " (" + year + ")");
+                                rate_view.setText("Rating: " + rating);
+                                release_view.setText("Released: " + released);
+                                run_view.setText("Runtime: " + runtime);
+                                genre_view.setText("Genre: " + genre);
+                                actor_view.setText("Actors: " + actor);
+                                plot_view.setText("Plot: " + plot);
+
+                                progressBar.setVisibility(View.GONE);
+                            }
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
