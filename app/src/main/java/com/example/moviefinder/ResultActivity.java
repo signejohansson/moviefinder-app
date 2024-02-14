@@ -41,10 +41,8 @@ public class ResultActivity extends Activity  {
         String url = "https://www.omdbapi.com/?t=" + movieName + "&apikey=ca833554";
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-
-                    @Override
-                    public void onResponse(JSONObject response) {
+                (Request.Method.GET, url, null,
+                        response -> {
                         try {
                             if (response.has("Error")) {
                                 String errorMessage = response.getString("Error");
@@ -77,15 +75,11 @@ public class ResultActivity extends Activity  {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                    }
-                }, new Response.ErrorListener() {
-
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(ResultActivity.this, "Error occurred!", Toast.LENGTH_SHORT).show();
-                        Log.e("Volley", error.toString());
-                        goBackToMain();
-                    }
+                },error -> {
+                    Toast.makeText(ResultActivity.this, "Error occurred!", Toast.LENGTH_SHORT).show();
+                    Log.e("Volley", error.toString());
+                    progressBar.setVisibility(View.GONE);
+                    goBackToMain();
                 });
         String REQUEST_TAG = "com.example.moviefinder";
         AppSingleton.getInstance(getApplicationContext()).addToRequestQueue(jsonObjectRequest, REQUEST_TAG);
