@@ -6,47 +6,63 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!-- gets movie input from user -->
+    <!-- searches for title, sends it to ResultActivity -->
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="Search for title"
+        android:text="@string/mainText"
+        android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.089"
+        app:layout_constraintHorizontal_bias="0.178"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.35" />
+        app:layout_constraintVertical_bias="0.375" />
 
-    <!-- gets movie input from user -->
     <EditText
         android:id="@+id/movie"
         android:layout_width="360dp"
         android:layout_height="57dp"
         android:layout_centerHorizontal="true"
+        android:background="@color/white"
+        android:hint="@string/hint"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.422" />
+        app:layout_constraintVertical_bias="0.452" />
 
-    <!-- searches for title, sends it to ResultActivity -->
     <Button
         android:id="@+id/search_btn"
         android:layout_width="110dp"
         android:layout_height="71dp"
         android:layout_centerHorizontal="true"
-        android:text="search"
+        android:text="@string/mainButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.533" />
+        app:layout_constraintVertical_bias="0.565" />
+
+    <ImageView
+        android:layout_width="178dp"
+        android:layout_height="189dp"
+        android:contentDescription="@string/imageDescription"
+        android:src="@drawable/movie_finder"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.075" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
