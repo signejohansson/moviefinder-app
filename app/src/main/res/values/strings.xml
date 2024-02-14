@@ -7,4 +7,11 @@
     <string name="hint">Enter title</string>
     <string name="imageDescription">The text "Movie Finder" above a film tape roll</string>
     <string name="imageDescription2">A film roll</string>
+    <string name="title_year_format">%1$s (%2$s)</string>
+    <string name="rating_format">Rating: %s</string>
+    <string name="released_format">Released: %s</string>
+    <string name="runtime_format">Runtime: %s</string>
+    <string name="genre_format">Genre: %s</string>
+    <string name="actors_format">Actors: %s</string>
+    <string name="plot_format">Plot: %s</string>
 </resources>

@@ -62,13 +62,14 @@ public class ResultActivity extends Activity  {
                                 String actor = response.getString("Actors");
                                 String plot = response.getString("Plot");
 
-                                title_view.setText(title + " (" + year + ")");
-                                rate_view.setText("Rating: " + rating);
-                                release_view.setText("Released: " + released);
-                                run_view.setText("Runtime: " + runtime);
-                                genre_view.setText("Genre: " + genre);
-                                actor_view.setText("Actors: " + actor);
-                                plot_view.setText("Plot: " + plot);
+                                title_view.setText(getString(R.string.title_year_format, title, year));
+                                rate_view.setText(getString(R.string.rating_format, rating));
+                                release_view.setText(getString(R.string.released_format, released));
+                                run_view.setText(getString(R.string.runtime_format, runtime));
+                                genre_view.setText(getString(R.string.genre_format, genre));
+                                actor_view.setText(getString(R.string.actors_format, actor));
+                                plot_view.setText(getString(R.string.plot_format, plot));
+
 
                                 progressBar.setVisibility(View.GONE);
                             }
